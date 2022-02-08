@@ -1,7 +1,30 @@
-console.log("yeah");
+import * as express from "express";
+import * as methodOverride from "method-override";
+import {static as expressStatic, urlencoded} from "express";
+import {engine} from "express-handlebars";
+import {router as homeRouter} from "./routes/home";
+import {router as warriorRouter} from "./routes/warrior";
+import {router as arenaRouter} from "./routes/arena";
+import {router as hallOfFameRouter} from "./routes/hall-of-fame";
 
-const c = 10;
+const app = express();
 
-const d = 20;
+app.use(methodOverride("_method"));
+app.use(urlencoded({
+    extended: true
+}));
 
-console.log(c);
+
+app.use(expressStatic(`${__dirname}/public`));
+app.engine(".hbs", engine({
+    extname: ".hbs"
+}))
+
+app.set("view engine", ".hbs");
+
+app.use("/", homeRouter);
+app.use("/warriors", warriorRouter);
+app.use("/arena", arenaRouter);
+app.use("/hall-of-fame", hallOfFameRouter);
+
+app.listen(3000, (): void => console.log("app listen on http://localhost:3000"))
