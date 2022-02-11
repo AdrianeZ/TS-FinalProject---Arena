@@ -1,11 +1,11 @@
 import {NextFunction, Request, Response} from "express";
 
 function addWarrior(req: Request, res: Response, next: NextFunction): void {
-    res.send("add warrior");
+    res.render("warrior/warrior-added");
 }
 
 function showWarriorForm(req: Request, res: Response, next: NextFunction): void {
-    res.send("show warrior form");
+    res.render("warrior/add-form");
 }
 
 

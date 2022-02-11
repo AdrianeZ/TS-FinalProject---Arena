@@ -1,11 +1,11 @@
 import {NextFunction, Request, Response} from "express";
 
 function fight(req: Request, res: Response, next: NextFunction): void {
-    res.send("fight has started");
+    res.render("arena/fight");
 }
 
 function showArenaForm(req: Request, res: Response, next: NextFunction): void {
-    res.send("show arena form");
+    res.render("arena/fight-form");
 }
 
 
