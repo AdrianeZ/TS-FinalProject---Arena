@@ -6,6 +6,8 @@ import {router as homeRouter} from "./routes/home";
 import {router as warriorRouter} from "./routes/warrior";
 import {router as arenaRouter} from "./routes/arena";
 import {router as hallOfFameRouter} from "./routes/hall-of-fame";
+import "./utils/db";
+import {handleError} from "./controllers/errorController";
 
 const app = express();
 
@@ -27,4 +29,7 @@ app.use("/warriors", warriorRouter);
 app.use("/arena", arenaRouter);
 app.use("/hall-of-fame", hallOfFameRouter);
 
-app.listen(3000, (): void => console.log("app listen on http://localhost:3000"))
+app.use(handleError);
+
+app.listen(3000, (): void => console.log("app listen on http://localhost:3000"));
+

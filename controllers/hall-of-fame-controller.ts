@@ -1,7 +1,17 @@
 import {NextFunction, Request, Response} from "express";
+import {Warrior} from "../models/Warrior";
 
-function listBestWarriors(req: Request, res: Response, next: NextFunction): void {
-    res.render("hall-of-fame/list");
+async function listBestWarriors(req: Request, res: Response, next: NextFunction): Promise<void> {
+
+    try {
+        const warriors = await Warrior.getTop(10);
+        res.render("hall-of-fame/list", warriors);
+    }
+    catch (error)
+    {
+        return next(error);
+    }
+
 }
 
 

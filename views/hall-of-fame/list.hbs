@@ -1,4 +1,20 @@
 <h2>Sala sław</h2>
-<ul>
-    <li>...</li>
-</ul>
+
+<table>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Imię</th>
+        <th>Ilość zwycięstw</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#each warriors}}
+                <tr>
+                    <th>{{@index}} </th>
+                    <td>{{this.name}}</td>
+                    <td>{{this.wins}}</td>
+                </tr>
+    {{/each}}
+    </tbody>
+</table>
