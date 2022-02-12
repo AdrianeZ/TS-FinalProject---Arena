@@ -5,16 +5,12 @@ async function listBestWarriors(req: Request, res: Response, next: NextFunction)
 
     try {
         const warriors = await Warrior.getTop(10);
-        res.render("hall-of-fame/list", warriors);
-    }
-    catch (error)
-    {
+        res.render("hall-of-fame/list", {warriors});
+    } catch (error) {
         return next(error);
     }
 
 }
-
-
 
 
 export {listBestWarriors};

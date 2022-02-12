@@ -1,12 +1,13 @@
 import * as express from "express";
 import * as methodOverride from "method-override";
+import "./utils/db";
 import {static as expressStatic, urlencoded} from "express";
 import {engine} from "express-handlebars";
+import {handlebarsHelpers} from "./utils/handlebars/helpers";
 import {router as homeRouter} from "./routes/home";
 import {router as warriorRouter} from "./routes/warrior";
 import {router as arenaRouter} from "./routes/arena";
 import {router as hallOfFameRouter} from "./routes/hall-of-fame";
-import "./utils/db";
 import {handleError} from "./controllers/errorController";
 
 const app = express();
@@ -19,7 +20,8 @@ app.use(urlencoded({
 
 app.use(expressStatic(`${__dirname}/public`));
 app.engine(".hbs", engine({
-    extname: ".hbs"
+    extname: ".hbs",
+    helpers:handlebarsHelpers
 }))
 
 app.set("view engine", ".hbs");

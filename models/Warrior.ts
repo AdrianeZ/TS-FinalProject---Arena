@@ -70,7 +70,7 @@ class Warrior {
     }
 
     static async getAll(): Promise<Warrior[]> {
-        const [results] = await pool.execute("SELECT * FROM `warriors") as WarriorResult;
+        const [results] = await pool.execute("SELECT * FROM `warriors`") as WarriorResult;
         return results.map(warrior => new Warrior(warrior));
     }
 

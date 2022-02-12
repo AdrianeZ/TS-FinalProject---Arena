@@ -28,6 +28,8 @@ SET time_zone = "+00:00";
 -- Struktura tabeli dla tabeli `warriors`
 --
 
+CREATE DATABASE `megak_arena`;
+
 CREATE TABLE `warriors` (
   `id` varchar(36) COLLATE utf8mb4_unicode_ci NOT NULL,
   `name` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
